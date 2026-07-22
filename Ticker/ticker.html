@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+body{margin:0;background:transparent;overflow:hidden;font-family:Arial}
+#bar{background:#111;border-top:3px solid #c9a227;border-bottom:3px solid #c9a227;
+height:70px;color:#fff;white-space:nowrap;overflow:hidden}
+#track{display:inline-block;padding-left:100%;font-size:32px;font-weight:bold;line-height:64px;
+animation:s 24s linear infinite}
+.gold{color:#f4c542}
+@keyframes s{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+</style></head><body>
+<div id="bar"><div id="track">
+🥈 <span class="gold">SILVER</span> <span id=silver>--</span>
+&nbsp;&nbsp;🥇 <span class="gold">GOLD</span> <span id=gold>--</span>
+&nbsp;&nbsp;🪙 <span class="gold">PLATINUM</span> <span id=plat>--</span>
+&nbsp;&nbsp;⭐ BOOKMARK THE SHEAUX &nbsp;&nbsp;🎁 FOLLOWERS GIVEYS &nbsp;&nbsp;💰 BUYERS GIVEYS
+</div></div>
+<script>
+async function u(){
+ try{
+  let r=await fetch("http://127.0.0.1:8080/prices.json?"+Date.now());
+  let d=await r.json();
+  silver.textContent="$"+d.silver.toFixed(2);
+  gold.textContent="$"+d.gold.toFixed(2);
+  plat.textContent="$"+d.platinum.toFixed(2);
+ }catch(e){}
+}
+u(); setInterval(u,15000);
+</script></body></html>
